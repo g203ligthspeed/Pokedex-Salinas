@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title color="light">
+      Pokedex
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+    <ion-item>
+      <ion-label color="danger">ID Pokémon </ion-label>
+      <ion-input color="danger" label="id del pokemon :" [(ngModel)]="pokemonId"></ion-input>
+    </ion-item>
+    <ion-button color="danger" fill="outline" (click)="getPokemonDataIDById()">Mostrar por ID</ion-button>
+ 
+    <ion-item>
+      <ion-label color="danger">Pokémon</ion-label>
+      <ion-input color="danger" label="nombre del pokemon :" [(ngModel)]="pokemonName"></ion-input>
+    </ion-item>
+    <ion-button color="danger" fill="outline" (click)="getPokemonDataByName()">Mostrar por Nombre</ion-button>
+<div class="fooasat">
+  <ion-card *ngIf="pokemonDetails">
+    <ion-card-header>
+      {{  pokemonDetails.id }}
+      {{ pokemonDetails.name }}
+    </ion-card-header>
+    <ion-card-content>
+      <ion-img [src]="pokemonDetails.sprites.front_default" alt="Imagen del Pokémon"></ion-img>
+    </ion-card-content>
+  </ion-card>
+</div>
+
+
+
+</ion-content>
+
+<ion-button color="danger" fill="outline" [routerLink]="'/ejercicio2'">objetos</ion-button>

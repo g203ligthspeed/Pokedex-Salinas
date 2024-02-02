@@ -1,0 +1,73 @@
+<!-- ejercicio2.page.html -->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Pokémon Details
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+  <ion-card>
+    <!-- Sección: Mostrar por ID -->
+    <section>
+      <h2>Mostrar por ID</h2>
+
+      <!-- Input y botón para ID del Pokémon -->
+      <ion-item>
+        <ion-label>ID del objeto:</ion-label>
+        <ion-input [(ngModel)]="pokemonId"></ion-input>
+    
+      </ion-item>
+      <ion-button (click)="getPokemonDataIDById()" color="danger">Mostrar por ID</ion-button>
+
+      <!-- Card para mostrar información por ID -->
+      <ion-card *ngIf="pokemonDetailsById">
+        <ion-card-header>
+          {{ pokemonDetailsById.name }}
+        </ion-card-header>
+        <ion-card-content>
+          <ion-img [src]="pokemonDetailsById.sprites.front_default" alt="Imagen del Pokémon"></ion-img>
+        </ion-card-content>
+      </ion-card>
+    </section>
+
+    <!-- Separador -->
+    <ion-item-divider></ion-item-divider>
+
+    <!-- Sección: Mostrar por Nombre -->
+    <section>
+      <h2>Mostrar por Nombre</h2>
+
+      <!-- Input y botón para Nombre del Pokémon -->
+      <ion-item>
+        <ion-label>Nombre del objeto:</ion-label>
+        <ion-input [(ngModel)]="pokemonName"></ion-input>
+      </ion-item>
+      <ion-button (click)="getPokemonDataByName()" color="danger">Mostrar por Nombre</ion-button>
+
+      <!-- Card para mostrar información por Nombre -->
+      <ion-card *ngIf="pokemonDetailsByName">
+        <ion-card-header>
+          {{ pokemonDetailsByName.name }}
+        </ion-card-header>
+        <ion-card-content>
+          <ion-img [src]="pokemonDetailsByName.sprites.front_default" alt="Imagen del Pokémon"></ion-img>
+        </ion-card-content>
+      </ion-card>
+    </section>
+
+    <!-- Sección: Lista de Pokémon -->
+    <section *ngIf="allPokemonList.length > 0">
+      <h2>Listado de Pokémon</h2>
+
+      <ion-list>
+        <ion-item *ngFor="let pokemon of allPokemonList" (click)="getPokemonDataByIDAndName(pokemon.id, pokemon.name)">
+          {{ pokemon.name }} (ID: {{ pokemon.id }})
+        </ion-item>
+      </ion-list>
+    </section>
+  </ion-card>
+
